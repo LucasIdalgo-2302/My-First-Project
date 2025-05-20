@@ -1,0 +1,11 @@
+# Ignore arquivos temporários e de sistema
+#.pyc
+__pycache__/
+.DS_Store
+
+# Ignore ambientes virtuais
+venv/
+.env/
+
+#Ignore dados brutos (opcional, se não quiser versionar)
+data/raw/
