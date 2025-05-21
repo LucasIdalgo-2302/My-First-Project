@@ -26,3 +26,21 @@ My First Project/
 ├── README.md # Documentação do projeto
 │
 └── requirements.txt # Lista de dependências (bibliotecas necessárias)
+
+---
+
+## **Objetivo do Projeto:**
+Desenvolver um projeto estruturado para práticas de:
+- Manipulação de dados em Python
+- Integração com banco de dados SQL
+- Versionamento de código com Git
+- Testes automatizados e boas práticas
+
+---
+
+## **Como Executar:**
+1. Clone o repositório:
+    ```bash
+    git clone <url-do-repositorio>
+    cd project_name
+    
