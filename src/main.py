@@ -58,6 +58,31 @@ def main():
     df['idade'] = df['idade'].astype(int) # Alterar tipo de dados (ex: string --> int)
     df.to_csv("data/processed/alunos_limpos.csv", index=False) # Salvar dados limpos
     
+    #Gráficos
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    plt.figure(figsize=(8, 5))
+    sns.barplot(x='aluno', y='nota', data=df)
+    plt.title("Notas por Aluno")
+    plt.tight_layout()
+    plt.show()
+
+    plt.figure(figsize=(8,5))
+    sns.histplot(df['nota'], bins=5, kde=True)
+    plt.title("Distribuição das Notas")
+    plt.tight_layout()
+    plt.show()
+
+    plt.figure(figsize=(8, 5))
+    sns.histplot(df['nota'], bins=5, kde=True)
+    plt.title("Distribuição das Notas")
+    plt.xlabel("Nota")
+    plt.ylabel("Frequência")
+    plt.tight_layout()
+    plt.show()
+
+
 if __name__ == "__main__":
     main()
 
