@@ -5,11 +5,31 @@ import pandas as pd
 def main():
     print("Projeto iniciado com sucesso! Vamos dominar Python e Dados!")
     # Lê o arquivo CSV
-    df = pd.read_csv("data/raw/alunos.csv")
+    df = pd.read_csv("data/processed/alunos_limpos.csv")
 
     # Mostra as 5 primeiras linhas
     print("\n Primeiras linhas do dataset:")
     print(df.head())
+
+    # Estatísticas básicas
+    print("\n Estatísticas gerais:")
+    print("Média das notas:", df['nota'].mean())
+    print("Mediana das idades:", df['idade'].median())
+    print("Maior nota:", df['nota'].max())
+    print("Menor nota:", df['nota'].min())
+    print("Desvio padrão das notas:", df['nota'].std())
+
+    #Resumo completo:
+    print("\n Resumo completo com describe():")
+    print(df.describe())
+
+    #Contagem de nomes repetidos:
+    print("\n Frequência de nomes:")
+    print(df['aluno'].value_counts())
+
+    #Média da nota por idade:
+    print("\n Média de nota por idade:")
+    print(df.groupby('idade')['nota'].mean())
 
     # Alunos com nota maior que 7
     print("\n Alunos com nota maior que 7:")
