@@ -82,6 +82,19 @@ def main():
     plt.tight_layout()
     plt.show()
 
+    plt.figure(figsize=(8, 5))
+    sns.barplot(x='aluno', y= 'nota', data=df)
+    plt.title("Notas por Aluno")
+    plt.xlabel("Aluno")
+    plt.ylabel("Nota")
+    plt.tight_layout()
+
+    # Salvar em arquivo
+    plt.savefig("visualizations/notas_por_aluno.png")
+
+    # Exibir o gráfico nomalmente
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
