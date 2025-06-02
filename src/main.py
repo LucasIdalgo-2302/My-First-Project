@@ -95,6 +95,27 @@ def main():
     # Exibir o gráfico nomalmente
     plt.show()
 
+    plt.figure(figsize=(8, 5))
+    sns.scatterplot(x='idade', y='nota', data=df)
+    plt.title("Nota vs Idade")
+    plt.xlabel("Idade")
+    plt.ylabel("Nota")
+    plt.tight_layout()
+    plt.savefig("visualizations/scatter_idade_nota.png")
+    plt.show()
+
+    plt.figure(figsize=(6,4))
+    sns.heatmap(df.corr(numeric_only=True), annot=True, cmap="coolwarm")
+    plt.title("Mapa de Correlação")
+    plt.tight_layout()
+    plt.savefig("visualizations/heatmap_correlacao.png")
+    plt.show()
+
+    sns.pairplot(df)
+    plt.savefig("visualizations/pairplot_dados.png")
+    plt.show()
+    
+
 
 if __name__ == "__main__":
     main()
