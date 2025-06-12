@@ -1,6 +1,6 @@
 
-
 import pandas as pd
+import sqlite3
 
 def main():
     print("Projeto iniciado com sucesso! Vamos dominar Python e Dados!")
@@ -18,6 +18,14 @@ def main():
     print("Maior nota:", df['nota'].max())
     print("Menor nota:", df['nota'].min())
     print("Desvio padrão das notas:", df['nota'].std())
+
+    # Conecta com bando de dados SQLite e cria a tabela 'alunos'
+    conn = sqlite3.connect("data/database/escola.db")
+    df.to_sql("alunos", conn, if_exists="replace", index=False)
+    conn.close()
+
+    print("\n Dados inseridos com sucesso no banco SQLite em 'data/database/escola.db'!")
+
 
     #Resumo completo:
     print("\n Resumo completo com describe():")
@@ -114,6 +122,11 @@ def main():
     sns.pairplot(df)
     plt.savefig("visualizations/pairplot_dados.png")
     plt.show()
+
+    print("\nmédia das notas por idade")
+    media_nota_idade= df.groupby('idade')['nota'].mean()
+    print(media_nota_idade)
+                                                                         
     
 
 
