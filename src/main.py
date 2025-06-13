@@ -24,6 +24,35 @@ def main():
     df.to_sql("alunos", conn, if_exists="replace", index=False)
     conn.close()
 
+    # Nova conexão para consultar dados com SQL
+    conn = sqlite3.connect("data/database/escola.db")
+
+    print("\nConsulta SQL: Alunos com nota maior que 7")
+    consulta1 = pd.read_sql_query("SELECT * FROM alunos WHERE nota > 7", conn)
+    print(consulta1)
+
+    print("\nConsulta SQL: Média de nota por idade")
+    consulta2 = pd.read_sql_query("""
+        SELECT idade, AVG(nota) as media_nota
+        FROM alunos
+        GROUP BY idade
+        ORDER BY idade
+    """, conn)                      
+    print(consulta2)
+
+    print("\nConsulta SQL: Aluno com maior nota")
+    consulta3 = pd.read_sql_query("""
+        SELECT aluno, nota
+        FROM alunos
+        ORDER BY nota DESC
+        LIMIT 1
+    """, conn)
+    print(consulta3)
+
+    # Fechando conexão
+    conn.close()                                                       
+                                  
+
     print("\n Dados inseridos com sucesso no banco SQLite em 'data/database/escola.db'!")
 
 
